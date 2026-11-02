@@ -1,0 +1,785 @@
+<title>EMCO Drum Shells</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Big+Shoulders+Text:wght@600;700&family=Big+Shoulders+Stencil+Display:wght@800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Layout: a black masthead carries the gold logo; the hero sets the headline over a dark shell photo, then the shop-floor photo straddles into a light ground;
+   three chapters pair prose with a two-print collage (a large photo with a matted inset); a ply-edge band hands off to the black order band. */
+:root {
+  --ground: #EDEBE6;
+  --ink: #1A1814;
+  --muted: #5E5950;
+  --rule: #CFCAC0;
+  --band: #0B0A08;          /* heritage black */
+  --band-ink: #EFEBE2;
+  --band-muted: #A9A296;
+  --band-line: #2A2722;
+  --gold: #D6AA4E;          /* from the logo */
+  --gold-hi: #F0D27E;
+  --gold-lo: #A77A26;
+  --gold-line: #5C4A22;
+  --gold-ink: #7A5812;      /* gold for text on the light ground */
+  --on-gold: #15110A;
+  --veneer: #D9A86C;        /* maple */
+  --veneer-alt: #E8C394;
+  --glueline: #8E6234;
+
+  --display: "Big Shoulders Display", "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
+  --label: "Big Shoulders Text", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --stencil: "Big Shoulders Stencil Display", "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --body: "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif;
+
+  --wrap: 1240px;
+  --side: clamp(16px, 4vw, 44px);
+  --head-h: 88px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #161511; --ink: #ECE8DF; --muted: #A49E92; --rule: #2F2C26;
+    --band: #0A0907; --band-ink: #EFEBE2; --band-muted: #A9A296; --band-line: #2A2722;
+    --gold: #D6AA4E; --gold-hi: #F0D27E; --gold-lo: #A77A26; --gold-line: #5C4A22; --gold-ink: #DDB866; --on-gold: #15110A;
+    --veneer: #D4A066; --veneer-alt: #E2BC8C; --glueline: #7A522A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #161511; --ink: #ECE8DF; --muted: #A49E92; --rule: #2F2C26;
+  --band: #0A0907; --band-ink: #EFEBE2; --band-muted: #A9A296; --band-line: #2A2722;
+  --gold: #D6AA4E; --gold-hi: #F0D27E; --gold-lo: #A77A26; --gold-line: #5C4A22; --gold-ink: #DDB866; --on-gold: #15110A;
+  --veneer: #D4A066; --veneer-alt: #E2BC8C; --glueline: #7A522A;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  font-optical-sizing: auto;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px); z-index: 10;
+  background: var(--band);
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+img { max-width: 100%; }
+
+.wrap {
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-left: max(var(--side), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--side), env(safe-area-inset-right, 0px));
+}
+.eyebrow {
+  font-family: var(--label);
+  font-weight: 700;
+  font-size: .8rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* ---------- Masthead ---------- */
+.masthead {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 9;
+  background: var(--band);
+  color: var(--band-ink);
+  border-bottom: 1px solid var(--gold-line);
+}
+.masthead .wrap {
+  min-height: var(--head-h);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.brand { display: block; flex: none; line-height: 0; }
+.brand img { display: block; height: 62px; width: auto; }
+.tagline {
+  margin: 0;
+  padding-left: 18px;
+  border-left: 1px solid var(--gold-line);
+  font-family: var(--label);
+  font-weight: 700;
+  font-size: .74rem;
+  line-height: 1.35;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--band-muted);
+  white-space: nowrap;
+}
+.tagline span { display: block; color: var(--gold); }
+
+.nav { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 34px); margin-left: auto; }
+.nav-links { display: flex; gap: clamp(18px, 2.4vw, 34px); list-style: none; margin: 0; padding: 0; }
+.nav-links a {
+  font-family: var(--label);
+  font-weight: 700;
+  font-size: .92rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding-block: 6px;
+  border-bottom: 2px solid transparent;
+  transition: border-color .2s, color .2s;
+}
+.nav-links a:hover { border-bottom-color: var(--gold); color: var(--gold); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--label);
+  font-weight: 700;
+  font-size: .95rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 12px 20px 11px;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  transition: transform .15s, border-color .2s, color .2s, filter .2s;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-gold {
+  background: linear-gradient(to bottom, var(--gold-hi), var(--gold) 55%, var(--gold-lo));
+  border-color: var(--gold-lo);
+  color: var(--on-gold);
+}
+.btn-gold:hover { filter: brightness(1.06); }
+.btn-line { border-color: var(--gold-line); color: var(--band-ink); }
+.btn-line:hover { border-color: var(--gold); color: var(--gold); }
+.masthead .btn { padding: 9px 16px 8px; font-size: .85rem; }
+
+/* ---------- Hero ---------- */
+.hero { color: var(--band-ink); }
+/* The shell photo sits behind the headline; its own black left half holds the type, and it fades to black at the foot. */
+.hero-top {
+  background:
+    linear-gradient(to bottom, transparent 62%, var(--band)),
+    linear-gradient(to right, var(--band) 0%, color-mix(in srgb, var(--band) 55%, transparent) 34%, transparent 58%),
+    url("images/hero-shell.jpg") right center / cover no-repeat,
+    var(--band);
+}
+.hero-top .wrap {
+  padding-block: clamp(56px, 9vw, 140px) clamp(48px, 7vw, 112px);
+  display: grid;
+  gap: clamp(28px, 3.6vw, 44px);
+}
+.hero-floor {
+  --straddle: clamp(70px, 13vw, 210px);
+  background: linear-gradient(to bottom, var(--band) calc(100% - var(--straddle)), var(--ground) calc(100% - var(--straddle)));
+}
+.hero .eyebrow { color: var(--gold); }
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(2.5rem, 5.6vw, 5rem);
+  line-height: .86;
+  letter-spacing: .004em;
+  margin: 14px 0 0;
+  text-wrap: balance;
+  max-width: 12.5em;
+}
+.hero h1 span { display: block; color: var(--gold); margin-top: .12em; }
+.hero h1 .no-more { color: var(--band-ink); }
+.hero-meta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 24px 48px;
+}
+.lede { margin: 0; max-width: 50ch; font-size: clamp(1.1rem, 1.6vw, 1.28rem); line-height: 1.55; color: var(--band-ink); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.floor { margin: 0; }
+.floor-photo {
+  position: relative;
+  aspect-ratio: 2000 / 1120;
+  max-width: 100%;
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--band-line);
+}
+.floor-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.press { position: absolute; left: var(--x); top: var(--y); width: 0; height: 0; }
+.press::before {
+  content: "";
+  position: absolute; left: -5px; top: -5px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 3px rgb(0 0 0 / .4);
+}
+.press span {
+  position: absolute;
+  bottom: 32px; left: 0;
+  transform: translateX(-50%);
+  font-family: var(--stencil);
+  font-weight: 800;
+  font-size: clamp(.95rem, 1.35vw, 1.2rem);
+  line-height: 1;
+  letter-spacing: .03em;
+  white-space: nowrap;
+  background: linear-gradient(to bottom, var(--gold-hi), var(--gold) 60%);
+  color: var(--on-gold);
+  padding: 5px 8px 4px;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / .35);
+  transition: transform .2s ease;
+}
+.press span::after {
+  content: "";
+  position: absolute; top: 100%; left: 50%;
+  width: 2px; height: 27px;
+  background: var(--gold);
+  transform: translateX(-50%);
+}
+.press.is-lit span { transform: translateX(-50%) translateY(-5px) scale(1.14); }
+
+.floor figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding-top: 14px;
+  color: var(--muted);
+  font-size: .95rem;
+}
+.sizes { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.sizes li {
+  font-family: var(--stencil);
+  font-weight: 800;
+  font-size: 1.05rem;
+  line-height: 1;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 6px 9px 5px;
+  transition: background-color .2s, border-color .2s, color .2s;
+}
+.sizes li.is-lit { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .press span { animation: drop .6s cubic-bezier(.2, .8, .3, 1.2) both; animation-delay: calc(var(--i) * 90ms + 250ms); }
+  .press::before { animation: ping 1.6s ease-out 2; animation-delay: calc(var(--i) * 90ms + 500ms); }
+}
+@keyframes drop { from { transform: translateX(-50%) translateY(-14px); } }
+@keyframes ping {
+  0% { box-shadow: 0 0 0 3px rgb(0 0 0 / .4), 0 0 0 0 var(--gold); }
+  100% { box-shadow: 0 0 0 3px rgb(0 0 0 / .4), 0 0 0 16px transparent; }
+}
+
+/* ---------- Chapters ---------- */
+.chapter { padding-block: clamp(64px, 9vw, 128px); scroll-margin-top: var(--head-h); }
+.chapter + .chapter { border-top: 3px double var(--rule); }
+.chapter .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+  gap: 32px clamp(32px, 7vw, 112px);
+  align-items: start;
+}
+.chapter.flip .wrap { grid-template-columns: minmax(0, 440px) minmax(0, 1fr); }
+.chapter.flip .prose { grid-column: 2; grid-row: 1; }
+.chapter.flip .collage { grid-column: 1; grid-row: 1; }
+.prose { min-width: 0; }
+.prose .eyebrow { color: var(--gold-ink); margin-bottom: 14px; }
+.prose h2.eyebrow { font-family: var(--label); font-weight: 700; font-size: .8rem; line-height: inherit; }
+.chapter h2 {
+  font-family: var(--display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(2.6rem, 6vw, 4.8rem);
+  line-height: .88;
+  margin: 0 0 .4em;
+  text-wrap: balance;
+}
+.prose p { max-width: 62ch; margin: 0 0 1.05em; }
+.prose p.lead { font-size: clamp(1.15rem, 1.5vw, 1.3rem); line-height: 1.55; }
+.prose p:last-child { margin-bottom: 0; }
+.prose p.statement {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 3.4vw, 2.8rem);
+  line-height: 1.02;
+  letter-spacing: .005em;
+  color: var(--gold-ink);
+  text-wrap: balance;
+  max-width: 22ch;
+  margin: .6em 0 .55em;
+}
+.statement em { font-style: normal; color: var(--ink); }
+
+/* Collage: a large print with a matted inset laid over its lower corner */
+.collage { margin: 0; min-width: 0; }
+.collage img { display: block; width: 100%; height: auto; }
+.collage .main { border-radius: 2px; }
+.collage .inset {
+  position: relative;
+  z-index: 1;
+  width: 56%;
+  margin: -24% -8% 0 auto;
+  border: 8px solid var(--ground);
+  background: var(--ground);
+  box-shadow: 0 16px 34px rgb(0 0 0 / .24);
+}
+.chapter.flip .collage .inset { margin: -24% auto 0 -8%; }
+.collage figcaption {
+  font-family: var(--label);
+  font-weight: 700;
+  font-size: .76rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 14px;
+}
+.collage figcaption span { color: var(--gold-ink); }
+
+/* Lineage: the three eras named in the story, in order */
+.lineage {
+  grid-column: 1 / -1;
+  list-style: none;
+  margin: clamp(24px, 4vw, 48px) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 2px solid var(--ink);
+}
+.lineage li { position: relative; padding: 26px 32px 0 0; min-width: 0; }
+.lineage li::before {
+  content: "";
+  position: absolute; top: -8px; left: 0;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--ground);
+  border: 2px solid var(--ink);
+}
+.lineage li:last-child::before { background: var(--gold); border-color: var(--gold); }
+.lineage .era { font-family: var(--label); font-weight: 700; font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-ink); }
+.lineage h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: 1.7rem; line-height: 1; margin: 8px 0 8px; }
+.lineage p { margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.55; max-width: 34ch; }
+
+/* What gives a shell its life */
+.factors { grid-column: 1 / -1; margin-top: clamp(24px, 4vw, 48px); }
+.factors .eyebrow { color: var(--gold-ink); margin-bottom: 18px; }
+.factors ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 40px); }
+.factors li { border-top: 1px solid var(--rule); padding-top: 18px; min-width: 0; }
+.ply-swatch {
+  display: block;
+  width: 56px; height: 15px;
+  margin-bottom: 16px;
+  border-radius: 1px;
+  background: linear-gradient(to bottom,
+    var(--glueline) 0 1px, var(--veneer) 1px 4px, var(--glueline) 4px 5px,
+    var(--veneer-alt) 5px 8px, var(--glueline) 8px 9px, var(--veneer) 9px 13px,
+    var(--glueline) 13px 14px, var(--veneer-alt) 14px 15px);
+}
+.factors li:nth-child(2) .ply-swatch { background: linear-gradient(to bottom,
+    var(--glueline) 0 2px, var(--veneer) 2px 6px, var(--glueline) 6px 8px, var(--veneer-alt) 8px 13px, var(--glueline) 13px 15px); }
+.factors li:nth-child(3) .ply-swatch { background: linear-gradient(to bottom,
+    var(--glueline) 0 1px, var(--veneer-alt) 1px 3px, var(--glueline) 3px 4px, var(--veneer) 4px 6px, var(--glueline) 6px 7px,
+    var(--veneer-alt) 7px 9px, var(--glueline) 9px 10px, var(--veneer) 10px 12px, var(--glueline) 12px 13px, var(--veneer-alt) 13px 15px); }
+.factors h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: 1.6rem; line-height: 1; margin: 0 0 8px; }
+.factors li p { margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.55; max-width: 32ch; }
+
+/* ---------- Ply edge + order band ---------- */
+.ply-edge {
+  height: 28px;
+  background: linear-gradient(to bottom,
+    var(--glueline) 0 1px, var(--veneer) 1px 5px, var(--glueline) 5px 6px,
+    var(--veneer-alt) 6px 10px, var(--glueline) 10px 11px, var(--veneer) 11px 16px,
+    var(--glueline) 16px 17px, var(--veneer-alt) 17px 21px, var(--glueline) 21px 22px,
+    var(--veneer) 22px 27px, var(--glueline) 27px 28px);
+}
+.order { background: var(--band); color: var(--band-ink); scroll-margin-top: var(--head-h); }
+.order .wrap {
+  padding-block: clamp(64px, 9vw, 120px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 40px clamp(32px, 7vw, 112px);
+  align-items: start;
+}
+.order .eyebrow { color: var(--gold); margin-bottom: 14px; }
+.order h2 {
+  font-family: var(--display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(2.6rem, 5.6vw, 4.6rem);
+  line-height: .88;
+  margin: 0 0 .4em;
+  text-wrap: balance;
+}
+.order p { margin: 0; max-width: 48ch; color: var(--band-ink); font-size: clamp(1.08rem, 1.4vw, 1.2rem); line-height: 1.6; }
+.contact { margin: 0; display: grid; }
+.contact > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 4px 16px;
+  padding-block: 18px;
+  border-top: 1px solid var(--band-line);
+}
+.contact > div:last-child { border-bottom: 1px solid var(--band-line); }
+.contact dt { grid-column: 1 / -1; font-family: var(--label); font-weight: 700; font-size: .76rem; letter-spacing: .18em; text-transform: uppercase; color: var(--band-muted); }
+.contact dd { margin: 0; min-width: 0; font-family: var(--display); font-weight: 700; font-size: clamp(1.45rem, 2.6vw, 2rem); line-height: 1.1; letter-spacing: .01em; overflow-wrap: anywhere; }
+.contact dd a { text-decoration: none; }
+.contact dd a:hover { color: var(--gold); }
+.copy {
+  font-family: var(--label);
+  font-weight: 700;
+  font-size: .76rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--band-ink);
+  background: transparent;
+  border: 1px solid var(--gold-line);
+  border-radius: 2px;
+  padding: 7px 12px 6px;
+  min-width: 82px;
+  cursor: pointer;
+  transition: border-color .2s, color .2s;
+}
+.copy:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ---------- Footer ---------- */
+.site-foot { background: var(--band); color: var(--band-ink); border-top: 3px double var(--gold-line); }
+.site-foot .wrap {
+  padding-block: clamp(48px, 6vw, 72px) 32px;
+  display: grid;
+  grid-template-columns: auto repeat(3, minmax(0, 1fr));
+  gap: 32px clamp(24px, 4vw, 56px);
+  align-items: start;
+}
+.foot-brand img { display: block; width: 200px; height: auto; }
+.foot-col { min-width: 0; overflow-wrap: anywhere; }
+.foot-col h3 { font-family: var(--label); font-weight: 700; font-size: .76rem; letter-spacing: .18em; text-transform: uppercase; color: var(--band-muted); margin: 0 0 12px; }
+.foot-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.foot-col a { text-decoration: none; }
+.foot-col a:hover { color: var(--gold); }
+.social a { display: inline-flex; align-items: center; gap: 10px; }
+.social svg { width: 18px; height: 18px; flex: none; fill: currentColor; }
+.social svg .line { fill: none; stroke: currentColor; stroke-width: 2; }
+.legal {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  border-top: 1px solid var(--band-line);
+  padding-top: 20px;
+  font-size: .88rem;
+  color: var(--band-muted);
+}
+
+/* ---------- Narrow screens ---------- */
+@media (max-width: 1080px) {
+  .nav-links { display: none; }
+}
+@media (max-width: 860px) {
+  .hero-meta { grid-template-columns: minmax(0, 1fr); }
+  .chapter .wrap, .chapter.flip .wrap { grid-template-columns: minmax(0, 1fr); }
+  .chapter.flip .prose, .chapter.flip .collage { grid-column: auto; grid-row: auto; }
+  .collage { max-width: 560px; }
+  .collage .inset, .chapter.flip .collage .inset { width: 58%; margin: -20% 0 0 auto; }
+  .chapter.flip .collage .inset { margin: -20% auto 0 0; }
+  .order .wrap { grid-template-columns: minmax(0, 1fr); }
+  .site-foot .wrap { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .foot-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  :root { --head-h: 70px; }
+  .masthead .wrap { gap: 12px; }
+  .brand img { height: 46px; }
+  .tagline { padding-left: 12px; font-size: .62rem; letter-spacing: .16em; }
+  .presses { display: none; }
+  .hero-top {
+    background:
+      linear-gradient(to bottom, color-mix(in srgb, var(--band) 40%, transparent), var(--band) 96%),
+      url("images/hero-shell.jpg") 70% center / cover no-repeat,
+      var(--band);
+  }
+  .lineage { grid-template-columns: minmax(0, 1fr); border-top: 0; border-left: 2px solid var(--ink); margin-left: 7px; }
+  .lineage li { padding: 0 0 28px 26px; }
+  .lineage li:last-child { padding-bottom: 0; }
+  .lineage li::before { top: 4px; left: -8px; }
+  .factors ul { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .site-foot .wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .foot-contact { grid-column: 1 / -1; order: 3; }
+  .legal { order: 4; }
+}
+@media (max-width: 480px) {
+  .cta-more { display: none; }
+  .masthead .btn { padding-inline: 12px; }
+}
+</style>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <img src="images/emco-logo.png" width="640" height="381" alt="EMCO Drum Shells">
+    </a>
+    <p class="tagline">Proudly made in <span>Kansas City, USA</span></p>
+    <nav class="nav" aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="#story">Our story</a></li>
+        <li><a href="#quality">Quality</a></li>
+        <li><a href="#goal">The goal</a></li>
+        <li><a href="#order">Contact</a></li>
+      </ul>
+      <a class="btn btn-gold" href="#order">Order<span class="cta-more">&nbsp;shells</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-top">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Drum shell builders &middot; Kansas City, USA</p>
+        <h1 id="hero-title">The fine art of shell building hasn’t been forgotten. <span>It’s just been ignored.</span> <span class="no-more">No more.</span></h1>
+      </div>
+      <div class="hero-meta">
+        <p class="lede">EMCO builds drum shells in Kansas City on C&amp;C Drums’ own presses, under the guidance of Brian Anderson, the master woodworker who developed the original C&amp;C shell.</p>
+        <div class="actions">
+          <a class="btn btn-gold" href="#order">Order shells</a>
+          <a class="btn btn-line" href="#story">Our story</a>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="hero-floor">
+    <div class="wrap">
+      <figure class="floor">
+        <div class="floor-photo">
+          <img src="images/shop-floor.jpg" width="2000" height="1120" alt="Finished drum shells on a work table in front of a row of green C&amp;C shell presses in the EMCO shop.">
+          <div class="presses" aria-hidden="true">
+            <div class="press" data-size="22" style="--x: 5.75%; --y: 44.2%; --i: 0"><span>22″</span></div>
+            <div class="press" data-size="16" style="--x: 48.75%; --y: 44%; --i: 1"><span>16″</span></div>
+            <div class="press" data-size="14" style="--x: 57.6%; --y: 45.1%; --i: 2"><span>14″</span></div>
+            <div class="press" data-size="13" style="--x: 67.8%; --y: 46.5%; --i: 3"><span>13″</span></div>
+            <div class="press" data-size="12" style="--x: 82%; --y: 47.8%; --i: 4"><span>12″</span></div>
+          </div>
+        </div>
+        <figcaption>
+          <span>The press floor. Each press is marked by shell diameter.</span>
+          <ul class="sizes" aria-label="Press diameters">
+            <li data-size="12">12″</li>
+            <li data-size="13">13″</li>
+            <li data-size="14">14″</li>
+            <li data-size="16">16″</li>
+            <li data-size="22">22″</li>
+          </ul>
+        </figcaption>
+      </figure>
+    </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="story" aria-labelledby="story-title">
+    <div class="wrap">
+      <div class="prose">
+        <h2 class="eyebrow" id="story-title">Our story</h2>
+        <p class="lead">It’s not enough to glue up a few hardwood plies, stuff them into a mold, cook it up, pop out a shell and expect to have the makings of a quality musical instrument. Drum shell building is an art.</p>
+        <p>It’s learned through understanding the value of age-old craftsmanship, along with years of woodworking experience, building shells and then refining your work. Unfortunately, much of the knowledge behind some of the best-made, best-sounding drum shells disappeared with the craftsmen who gave birth to them during the golden age of American drum building in the ’50s, ’60s and early ’70s.</p>
+        <p>Raised from the ashes of what was once C&amp;C Drums’ reputable shell-building operation, a clean, modern workspace with expertly tuned equipment now houses EMCO’s production. Under the guidance of master woodworker Brian Anderson, the man responsible for developing those coveted original C&amp;C shells, EMCO restores drum shell building to just that. An art.</p>
+      </div>
+      <figure class="collage">
+        <img class="main" src="images/craftsman-phone.jpg" width="719" height="1100" alt="A woodworker in an EMCO Drum Shells shirt takes a call at a work table, with shell presses in the background.">
+        <img class="inset" src="images/veneer-cutting.jpg" width="1100" height="1005" alt="Cutting a sheet of veneer to size against a long straightedge.">
+        <figcaption>Taking a call in the shop <span>&middot;</span> Inset: cutting veneer to size</figcaption>
+      </figure>
+      <ol class="lineage">
+        <li>
+          <span class="era">1950s – early ’70s</span>
+          <h3>The golden age</h3>
+          <p>American drum building at its best, and the craftsmen who knew how.</p>
+        </li>
+        <li>
+          <span class="era">C&amp;C Drums</span>
+          <h3>The original shell</h3>
+          <p>The coveted C&amp;C shell, developed by Brian Anderson.</p>
+        </li>
+        <li>
+          <span class="era">Today</span>
+          <h3>EMCO, Kansas City</h3>
+          <p>The same presses, expertly tuned, in a clean, modern shop.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="chapter flip" id="quality" aria-labelledby="quality-title">
+    <div class="wrap">
+      <div class="prose">
+        <p class="eyebrow">Quality</p>
+        <h2 id="quality-title">Quality, not quantity.</h2>
+        <p class="lead">Regardless of how many shells you need, maintaining the highest standard of quality is always at the forefront for us.</p>
+        <p>We’ve seen what happens when builders take their eye off the ball, and it isn’t pretty. Shells that crack, delaminate or warp are costly for both you and us. It’s a no-win situation.</p>
+        <p class="statement">We stand behind every shell we build.</p>
+        <p>You never have to worry about getting stuck with defective or questionable shells. Quality also means excellent customer service. At a time when you’re more than likely to find yourself working through questions about an order with an automated phone attendant, we still believe in having a friendly, knowledgeable person available to take care of your needs.</p>
+      </div>
+      <figure class="collage">
+        <img class="main" src="images/plies-layup.jpg" width="959" height="1100" alt="A craftsman brushes glue across a sheet of veneer on the layup table, next to a steel bowl.">
+        <img class="inset" src="images/shell-sanding.jpg" width="1100" height="1005" alt="Sanding the edge of a raw maple shell by hand at the bench.">
+        <figcaption>Spreading glue on a ply <span>&middot;</span> Inset: sanding a raw shell</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="chapter" id="goal" aria-labelledby="goal-title">
+    <div class="wrap">
+      <div class="prose">
+        <p class="eyebrow">The goal</p>
+        <h2 id="goal-title">Only the best.</h2>
+        <p class="lead">Our aim isn’t to become the biggest independent supplier of drum shells, only the best.</p>
+        <p class="statement">A good shell is the difference between a drum that sings and <em>one that just drones.</em></p>
+        <p>It’s a complex science of understanding the characteristics of each wood, and how grain and ply direction, the amount of glue used, and wood density play a critical role in giving life to a shell. We also know the responsibility we carry in making sure your order gets to you when you need it.</p>
+      </div>
+      <figure class="collage">
+        <img class="main" src="images/shell-press.jpg" width="959" height="1100" alt="A craftsman seats a maple shell into the ring mold of a green and yellow press.">
+        <img class="inset" src="images/shells-stacked.jpg" width="1100" height="805" alt="Raw maple drum shells of several diameters standing on end.">
+        <figcaption>Seating a shell in the mold <span>&middot;</span> Inset: shells in several diameters</figcaption>
+      </figure>
+      <div class="factors">
+        <p class="eyebrow">What gives a shell its life</p>
+        <ul>
+          <li>
+            <span class="ply-swatch" aria-hidden="true"></span>
+            <h3>Grain &amp; ply direction</h3>
+            <p>How each ply is oriented as the shell is laid up in the mold.</p>
+          </li>
+          <li>
+            <span class="ply-swatch" aria-hidden="true"></span>
+            <h3>Glue</h3>
+            <p>How much is used between the plies.</p>
+          </li>
+          <li>
+            <span class="ply-swatch" aria-hidden="true"></span>
+            <h3>Wood density</h3>
+            <p>The characteristics each wood brings to the finished shell.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="ply-edge" aria-hidden="true"></div>
+
+  <section class="order" id="order" aria-labelledby="order-title">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Orders &amp; questions</p>
+        <h2 id="order-title">Talk to someone who knows shells.</h2>
+        <p>Call or email the shop. A friendly, knowledgeable person will help with your order, however many shells you need.</p>
+      </div>
+      <dl class="contact">
+        <div>
+          <dt>Phone</dt>
+          <dd><a id="c-phone" href="tel:+11234567890">123-456-7890</a></dd>
+          <button class="copy" type="button" data-copy="c-phone">Copy</button>
+        </div>
+        <div>
+          <dt>Email</dt>
+          <dd><a id="c-email" href="mailto:info@emcodrumshells.com">info@emcodrumshells.com</a></dd>
+          <button class="copy" type="button" data-copy="c-email">Copy</button>
+        </div>
+        <div>
+          <dt>Shop</dt>
+          <dd>Kansas City, USA</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-brand">
+      <img src="images/emco-badge.png" width="460" height="329" alt="EMCO Drum Shells, proudly made in Kansas City, USA">
+    </div>
+    <div class="foot-col">
+      <h3>Explore</h3>
+      <ul>
+        <li><a href="#story">Our story</a></li>
+        <li><a href="#quality">Quality</a></li>
+        <li><a href="#goal">The goal</a></li>
+        <li><a href="#order">Order shells</a></li>
+      </ul>
+    </div>
+    <div class="foot-col foot-contact">
+      <h3>Contact</h3>
+      <ul>
+        <li>123-456-7890</li>
+        <li>info@emcodrumshells.com</li>
+        <li>Kansas City, USA</li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h3>Follow</h3>
+      <ul class="social">
+        <li><a href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.2V8.8l5.6 3.2-5.6 3.2z"/></svg>YouTube</a></li>
+        <li><a href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><rect class="line" x="3" y="3" width="18" height="18" rx="5"/><circle class="line" cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.25"/></svg>Instagram</a></li>
+        <li><a href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.6 21.5v-8.2h2.8l.4-3.3h-3.2V7.9c0-.9.3-1.6 1.6-1.6h1.7V3.4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H7.4v3.3h2.8v8.2h3.4z"/></svg>Facebook</a></li>
+      </ul>
+    </div>
+    <div class="legal">
+      <span>&copy; 2026 EMCO Drum Shells</span>
+      <span><a href="#">Privacy Policy</a> &middot; <a href="#">Accessibility Statement</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  // Hovering a diameter in the caption lifts its tag on the photo.
+  const tags = new Map([...document.querySelectorAll('.press')].map(t => [t.dataset.size, t]));
+  document.querySelectorAll('.sizes li').forEach(chip => {
+    const light = on => {
+      chip.classList.toggle('is-lit', on);
+      tags.get(chip.dataset.size)?.classList.toggle('is-lit', on);
+    };
+    chip.addEventListener('pointerenter', () => light(true));
+    chip.addEventListener('pointerleave', () => light(false));
+  });
+  tags.forEach((tag, size) => {
+    const chip = document.querySelector(`.sizes li[data-size="${size}"]`);
+    tag.addEventListener('pointerenter', () => { tag.classList.add('is-lit'); chip?.classList.add('is-lit'); });
+    tag.addEventListener('pointerleave', () => { tag.classList.remove('is-lit'); chip?.classList.remove('is-lit'); });
+  });
+
+  // Copy buttons; fall back to selecting the text where the clipboard is refused.
+  document.querySelectorAll('[data-copy]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.copy);
+      const flash = label => {
+        btn.textContent = label;
+        clearTimeout(btn._reset);
+        btn._reset = setTimeout(() => { btn.textContent = 'Copy'; }, 1800);
+      };
+      const select = () => {
+        const range = document.createRange();
+        range.selectNodeContents(target);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        flash('Selected');
+      };
+      try {
+        navigator.clipboard.writeText(target.textContent.trim()).then(() => flash('Copied'), select);
+      } catch (e) {
+        select();
+      }
+    });
+  });
+})();
+</script>
