@@ -18,7 +18,7 @@ Under `file://`, the Copy buttons in the order band fall back to selecting the t
 
 ## Document shell
 
-`index.html` is an HTML fragment: it starts at `<title>` and has no `<!DOCTYPE>`, `<html>`, `<head>`, `<body>`, `<meta charset>`, or `<meta name="viewport">`. It was authored as a Claude artifact, which is why it has the `claude:viewport-fit-sides` meta tag. Browsers render it fine, but deploying it as a standalone site needs a proper document wrapper.
+The page was originally authored as a Claude artifact, so the top-level markup is not indented under `<head>` and `<body>`. The viewport meta includes `viewport-fit=cover`, which the masthead, `.wrap` padding, and `body::before` need: they use `env(safe-area-inset-*)` to clear the notch on iOS. Keep it if you edit the viewport tag.
 
 ## Page structure
 
