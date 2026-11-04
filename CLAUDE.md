@@ -34,7 +34,7 @@ The comment at the top of `styles.css` gives the home page's layout order: black
 
 - **Header menu.** At ≤1080px the inline `.nav-links` are hidden, and a `<details class="menu">` after the Order button takes over. Its `<summary>` is the hamburger, and its `.menu-panel` list drops below the masthead, which is the panel's containing block because sticky counts as positioned. Opening and closing work natively without JavaScript. `site.js` adds closing on Escape (returning focus to the toggle), on an outside click, on a link click, and when the window widens past 1080px. At ≤480px the masthead tagline is hidden to make room for the logo, Order button, and hamburger.
 
-- **Chapters** use a two-column grid: `.prose` plus a `.collage` figure, a large `.main` image with a matted `.inset` overlapping its lower corner. Adding `.flip` to a chapter swaps the columns and mirrors the inset. `.lineage` (story) and `.factors` (goal) span both columns with `grid-column: 1 / -1`.
+- **Chapters** use a two-column grid: `.prose` plus a `.collage` figure, a large `.main` image with a matted `.inset` overlapping its lower corner. Adding `.flip` to a chapter swaps the columns and mirrors the inset. `.bio` (story: Brian Anderson's work-history timeline, the `.lineage` list) and `.factors` (goal: Brian's "thicker ply, less glue" mantra and its three parts) span both columns with `grid-column: 1 / -1`.
 - **Document pages** use a black `.doc-head` title band, then a `.doc` > `.doc-body` reading column. Inside `.doc`, the focus outline switches to `--gold-ink`, because the bright `--gold` ring is only 1.8:1 against the light ground.
 - **Ply graphics** (`.ply-edge`, `.ply-swatch`) are pure CSS stacked linear-gradients built from the `--veneer`, `--veneer-alt`, and `--glueline` variables, not images.
 
@@ -48,6 +48,12 @@ The comment at the top of `styles.css` gives the home page's layout order: black
 - **Favicons.** `favicon.ico` (16/32/48px), `images/icon-192.png`, and `apple-touch-icon.png` (180px, padded onto the site's black so iOS's corner mask doesn't clip the gold border) are all generated from the client's square "E" badge. If the badge changes, regenerate all three. `favicon.ico` and `apple-touch-icon.png` live at the site root because browsers and iOS request those paths by default.
 - **Contact details** appear in the home page's `#order` band (as `tel:`/`mailto:` links with matching `id`s that the Copy buttons target through `data-copy`), in every page's footer Contact column, and in the contact paragraphs of both legal pages. Change them everywhere.
 - **Legal page content describes the site's actual behavior.** The privacy policy says the site has no forms, cookies, analytics, or trackers, and that its only third-party request is Google Fonts. The accessibility statement lists features such as reduced-motion support, light and dark mode, AA text contrast, and reflow at 320px. If you add a form, analytics, embeds, or another third-party resource, or change those features, update the relevant page and its "Last updated" date.
+
+## Client content rules
+
+- **Don't name C&C Drums** anywhere except the 2008–2018 entry in Brian's work history (the `.bio` timeline in `#story`). That includes alt text, captions, and HTML comments.
+- **Check new photos for C&C branding.** The shop's presses came from C&C, and some still show "C&C DRUM" stencils or a C&C crest. The hero's `shop-floor.jpg` shows the stencils on the right-hand presses, and the crest appears on a control box in the background of `veneer-into-mold.webp`.
+- **Photos must show the real presses.** The client rejected earlier AI-generated images because their drum molds looked nothing like the real green-and-yellow ring presses. Use the client's own shop photos for anything showing presses or molds.
 
 ## Placeholders still in the site
 

@@ -412,11 +412,12 @@ img { max-width: 100%; }
 }
 .collage figcaption span { color: var(--gold-ink); }
 
-/* Lineage: the three eras named in the story, in order */
+/* Bio: Brian's work history as a timeline, oldest first; the gold dot marks today. */
+.bio { grid-column: 1 / -1; margin-top: clamp(24px, 4vw, 48px); }
+.bio .eyebrow { color: var(--gold-ink); margin-bottom: 22px; }
 .lineage {
-  grid-column: 1 / -1;
   list-style: none;
-  margin: clamp(24px, 4vw, 48px) 0 0;
+  margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -435,9 +436,19 @@ img { max-width: 100%; }
 .lineage h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: 1.7rem; line-height: 1; margin: 8px 0 8px; }
 .lineage p { margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.55; max-width: 34ch; }
 
-/* What gives a shell its life */
+/* Brian's design mantra, then its three parts, each with a ply-section swatch */
 .factors { grid-column: 1 / -1; margin-top: clamp(24px, 4vw, 48px); }
-.factors .eyebrow { color: var(--gold-ink); margin-bottom: 18px; }
+.factors .eyebrow { color: var(--gold-ink); margin-bottom: 10px; }
+.mantra {
+  font-family: var(--display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: .92;
+  color: var(--gold-ink);
+  text-wrap: balance;
+  margin: 0 0 clamp(22px, 3vw, 34px);
+}
 .factors ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 40px); }
 .factors li { border-top: 1px solid var(--rule); padding-top: 18px; min-width: 0; }
 .ply-swatch {
@@ -450,11 +461,13 @@ img { max-width: 100%; }
     var(--veneer-alt) 5px 8px, var(--glueline) 8px 9px, var(--veneer) 9px 13px,
     var(--glueline) 13px 14px, var(--veneer-alt) 14px 15px);
 }
+/* Thicker ply: two heavy plies. Less glue: a single hairline glue line. The best wood: solid grain, no glue at all. */
+.factors li:nth-child(1) .ply-swatch { background: linear-gradient(to bottom,
+    var(--glueline) 0 1px, var(--veneer) 1px 7px, var(--glueline) 7px 8px, var(--veneer-alt) 8px 14px, var(--glueline) 14px 15px); }
 .factors li:nth-child(2) .ply-swatch { background: linear-gradient(to bottom,
-    var(--glueline) 0 2px, var(--veneer) 2px 6px, var(--glueline) 6px 8px, var(--veneer-alt) 8px 13px, var(--glueline) 13px 15px); }
+    var(--veneer) 0 7px, var(--glueline) 7px 8px, var(--veneer-alt) 8px 15px); }
 .factors li:nth-child(3) .ply-swatch { background: linear-gradient(to bottom,
-    var(--glueline) 0 1px, var(--veneer-alt) 1px 3px, var(--glueline) 3px 4px, var(--veneer) 4px 6px, var(--glueline) 6px 7px,
-    var(--veneer-alt) 7px 9px, var(--glueline) 9px 10px, var(--veneer) 10px 12px, var(--glueline) 12px 13px, var(--veneer-alt) 13px 15px); }
+    var(--veneer-alt) 0 2px, var(--veneer) 2px 6px, var(--veneer-alt) 6px 7px, var(--veneer) 7px 11px, var(--veneer-alt) 11px 12px, var(--veneer) 12px 15px); }
 .factors h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: 1.6rem; line-height: 1; margin: 0 0 8px; }
 .factors li p { margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.55; max-width: 32ch; }
 
