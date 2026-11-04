@@ -107,7 +107,7 @@ img { max-width: 100%; }
   gap: 18px;
 }
 .brand { display: block; flex: none; line-height: 0; }
-.brand img { display: block; height: 62px; width: auto; }
+.brand img { display: block; height: 53px; width: auto; }
 .tagline {
   margin: 0;
   padding-left: 18px;
@@ -464,7 +464,10 @@ img { max-width: 100%; }
   gap: 32px clamp(24px, 4vw, 56px);
   align-items: start;
 }
-.foot-brand img { display: block; width: 200px; height: auto; }
+/* Logo with the made-in tagline centered beneath it; the block shrinks to the logo's width even when it spans the grid row. */
+.foot-brand { display: grid; justify-items: center; justify-self: start; gap: 16px; }
+.foot-brand img { display: block; width: 170px; height: auto; }
+.foot-brand .tagline { padding-left: 0; border-left: 0; text-align: center; }
 .foot-col { min-width: 0; overflow-wrap: anywhere; }
 .foot-col h3 { font-family: var(--label); font-weight: 700; font-size: .76rem; letter-spacing: .18em; text-transform: uppercase; color: var(--band-muted); margin: 0 0 12px; }
 .foot-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
@@ -503,8 +506,8 @@ img { max-width: 100%; }
 @media (max-width: 640px) {
   :root { --head-h: 70px; }
   .masthead .wrap { gap: 12px; }
-  .brand img { height: 46px; }
-  .tagline { padding-left: 12px; font-size: .62rem; letter-spacing: .16em; }
+  .brand img { height: 39px; }
+  .masthead .tagline { padding-left: 12px; font-size: .62rem; letter-spacing: .16em; }
   .presses { display: none; }
   .hero-top {
     background:
@@ -525,6 +528,12 @@ img { max-width: 100%; }
   .cta-more { display: none; }
   .masthead .btn { padding-inline: 12px; }
 }
+/* The wide badge logo needs a little room back on the smallest phones. */
+@media (max-width: 359px) {
+  .masthead .wrap, .nav { gap: 8px; }
+  .brand img { height: 32px; }
+  .masthead .tagline { padding-left: 8px; }
+}
 </style>
 </head>
 <body>
@@ -532,7 +541,7 @@ img { max-width: 100%; }
 <header class="masthead">
   <div class="wrap">
     <a class="brand" href="#top">
-      <img src="images/emco-logo.png" width="640" height="381" alt="EMCO Drum Shells">
+      <img src="images/emco-logo.webp" width="800" height="243" alt="EMCO Drum Shells">
     </a>
     <p class="tagline">Proudly made in <span>Kansas City, USA</span></p>
     <nav class="nav" aria-label="Main">
@@ -712,7 +721,8 @@ img { max-width: 100%; }
 <footer class="site-foot">
   <div class="wrap">
     <div class="foot-brand">
-      <img src="images/emco-badge.png" width="460" height="329" alt="EMCO Drum Shells, proudly made in Kansas City, USA">
+      <img src="images/emco-logo.webp" width="800" height="243" alt="EMCO Drum Shells">
+      <p class="tagline">Proudly made in <span>Kansas City, USA</span></p>
     </div>
     <div class="foot-col">
       <h3>Explore</h3>
