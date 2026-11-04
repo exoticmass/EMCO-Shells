@@ -57,7 +57,6 @@ The comment at the top of `styles.css` gives the home page's layout order: black
 
 ## Placeholders still in the site
 
-- The phone number `123-456-7890` / `tel:+11234567890` is a placeholder.
 - The social links (YouTube, Instagram, Facebook) point to `href="#"`.
 - The privacy policy and accessibility statement are drafts written from what the site does. The client should confirm the statements about their own practices, such as how they use customer contact details and that they don't sell personal information.
 
