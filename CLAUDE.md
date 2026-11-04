@@ -52,7 +52,7 @@ The comment at the top of `styles.css` gives the home page's layout order: black
 ## Client content rules
 
 - **Don't name C&C Drums** anywhere except the 2008–2018 entry in Brian's work history (the `.bio` timeline in `#story`). That includes alt text, captions, and HTML comments.
-- **Check new photos for C&C branding.** The shop's presses came from C&C, and some still show "C&C DRUM" stencils or a C&C crest. The hero's `shop-floor.jpg` shows the stencils on the right-hand presses, and the crest appears on a control box in the background of `veneer-into-mold.webp`.
+- **Check new photos for C&C branding.** The shop's presses came from C&C, and some still show "C&C DRUM" stencils or a C&C crest. The hero's `shop-floor.jpg` has been retouched to remove the stencils from the press fronts (keep that version if you recompress or recrop it), and the crest still appears on a control box in the background of `veneer-into-mold.webp`.
 - **Photos must show the real presses.** The client rejected earlier AI-generated images because their drum molds looked nothing like the real green-and-yellow ring presses. Use the client's own shop photos for anything showing presses or molds.
 
 ## Placeholders still in the site
