@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A static marketing site for EMCO Drum Shells (Kansas City), made of three hand-written HTML pages that share one stylesheet:
 
-- `index.html`: the one-page home page, with a small inline `<script>` for the press-tag hover and the Copy buttons
+- `index.html`: the one-page home page, with a small inline `<script>` for the press-tag hover, the Copy buttons, and the inquiry form
 - `privacy.html` and `accessibility.html`: the legal pages linked from the footer
 - `styles.css`: all CSS for every page
 - `site.js`: script shared by every page (currently only the header menu's close behavior)
@@ -22,7 +22,7 @@ Open `index.html` directly in a browser, or serve the folder so the Clipboard AP
 python3 -m http.server 8000
 ```
 
-`.claude/launch.json` runs the same server for the Claude preview pane. Under `file://`, the Copy buttons in the order band fall back to selecting the text instead of copying it. That's intended, not a bug.
+`.claude/launch.json` runs the same server for the Claude preview pane. Under `file://`, the Copy buttons in the order band fall back to selecting the text instead of copying it. That's intended, not a bug. The inquiry form only sends on Netlify: a local server refuses the POST, so the form shows its error message.
 
 ## Document shell
 
@@ -37,6 +37,7 @@ The comment at the top of `styles.css` gives the home page's layout order: black
 - **Chapters** use a two-column grid: `.prose` plus a `.collage` figure, a large `.main` image with a matted `.inset` overlapping its lower corner. Adding `.flip` to a chapter swaps the columns and mirrors the inset. `.bio` (story: Brian Anderson's work-history timeline, the `.lineage` list) and `.factors` (goal: Brian's "thicker ply, less glue" mantra and its three parts) span both columns with `grid-column: 1 / -1`.
 - **Document pages** use a black `.doc-head` title band, then a `.doc` > `.doc-body` reading column. Inside `.doc`, the focus outline switches to `--gold-ink`, because the bright `--gold` ring is only 1.8:1 against the light ground.
 - **Ply graphics** (`.ply-edge`, `.ply-swatch`) are pure CSS stacked linear-gradients built from the `--veneer`, `--veneer-alt`, and `--glueline` variables, not images.
+- **Order band** is two columns: `.order-intro` (heading, intro, and the `.contact` list) and the `.inquiry` form, stacking at ≤860px. The form is a Netlify Form (`name="order-inquiry"`, `data-netlify`, honeypot field `bot-field`, hidden `form-name` and `subject` inputs). Netlify finds it in the deployed HTML, so form detection must be on in the Netlify project, and submissions are emailed through the project's form notifications. The inline script posts it with `fetch` to `/`, then hides the fields and shows `.form-done` (adding `.is-sent`); without JavaScript it posts normally and Netlify shows its own confirmation page. Required fields rely on the browser's built-in validation. Field names are what appear in the Netlify dashboard and notification emails, so renaming one changes the submissions.
 
 ## Things that are coupled
 
@@ -46,8 +47,8 @@ The comment at the top of `styles.css` gives the home page's layout order: black
 - **Press ↔ size-chip hover link.** The script pairs `.press[data-size]` tags with `.sizes li[data-size]` chips by matching `data-size`, so adding or removing a diameter means editing both lists. The press tags are hidden below 640px.
 - **Image dimensions.** Every `<img>` has `width`/`height` attributes that match the file's actual pixel size (used for aspect ratio and layout stability). Update them when you swap an image. `hero-shell.jpg` is a CSS background, referenced in both `.hero-top` and its ≤640px override.
 - **Favicons.** `favicon.ico` (16/32/48px), `images/icon-192.png`, and `apple-touch-icon.png` (180px, padded onto the site's black so iOS's corner mask doesn't clip the gold border) are all generated from the client's square "E" badge. If the badge changes, regenerate all three. `favicon.ico` and `apple-touch-icon.png` live at the site root because browsers and iOS request those paths by default.
-- **Contact details** appear in the home page's `#order` band (as `tel:`/`mailto:` links with matching `id`s that the Copy buttons target through `data-copy`), in every page's footer Contact column, and in the contact paragraphs of both legal pages. Change them everywhere.
-- **Legal page content describes the site's actual behavior.** The privacy policy says the site has no forms, cookies, analytics, or trackers, and that its only third-party request is Google Fonts. The accessibility statement lists features such as reduced-motion support, light and dark mode, AA text contrast, and reflow at 320px. If you add a form, analytics, embeds, or another third-party resource, or change those features, update the relevant page and its "Last updated" date.
+- **Contact details** appear in the home page's `#order` band (as `tel:`/`mailto:` links with matching `id`s that the Copy buttons target through `data-copy`), in the form's `.form-done` thank-you message, in every page's footer Contact column, and in the contact paragraphs of both legal pages. Change them everywhere.
+- **Legal page content describes the site's actual behavior.** The privacy policy describes the contact form's fields, says Netlify receives and stores submissions, and says updates go only to people who tick the updates box. It also says the site has no cookies, analytics, or trackers, and that its only third-party request is Google Fonts. The accessibility statement lists features such as reduced-motion support, light and dark mode, AA text contrast, labeled form fields, and reflow at 320px. If you add or change a form field, analytics, embeds, or another third-party resource, or change those features, update the relevant page and its "Last updated" date.
 
 ## Client content rules
 

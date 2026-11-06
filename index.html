@@ -184,27 +184,123 @@
 
   <section class="order" id="order" aria-labelledby="order-title">
     <div class="wrap">
-      <div>
+      <div class="order-intro">
         <p class="eyebrow">Orders &amp; questions</p>
         <h2 id="order-title">Talk to someone who knows shells.</h2>
-        <p>Call or email the shop. A friendly, knowledgeable person will help with your order, however many shells you need.</p>
+        <p>Tell us what you’re building with the form, or call or email the shop. Either way, a friendly, knowledgeable person will help with your order, however many shells you need.</p>
+        <dl class="contact">
+          <div>
+            <dt>Phone</dt>
+            <dd><a id="c-phone" href="tel:+18163001550">816-300-1550</a></dd>
+            <button class="copy" type="button" data-copy="c-phone">Copy</button>
+          </div>
+          <div>
+            <dt>Email</dt>
+            <dd><a id="c-email" href="mailto:info@emcodrumshells.com">info@emcodrumshells.com</a></dd>
+            <button class="copy" type="button" data-copy="c-email">Copy</button>
+          </div>
+          <div>
+            <dt>Shop</dt>
+            <dd>Kansas City, USA</dd>
+          </div>
+        </dl>
       </div>
-      <dl class="contact">
-        <div>
-          <dt>Phone</dt>
-          <dd><a id="c-phone" href="tel:+18163001550">816-300-1550</a></dd>
-          <button class="copy" type="button" data-copy="c-phone">Copy</button>
+
+      <!-- Netlify Forms picks this form up at deploy time (data-netlify) and emails each submission. -->
+      <form class="inquiry" name="order-inquiry" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" aria-labelledby="inquiry-title">
+        <input type="hidden" name="form-name" value="order-inquiry">
+        <input type="hidden" name="subject" value="New shell inquiry from emcodrumshells.com">
+        <p class="visually-hidden" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+        <h3 class="form-title" id="inquiry-title">Send us a note</h3>
+
+        <div class="fields">
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="f-phone">Phone <span class="opt">(optional)</span></label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="f-company">Company or shop name <span class="opt">(optional)</span></label>
+            <input id="f-company" name="company" type="text" autocomplete="organization">
+          </div>
         </div>
-        <div>
-          <dt>Email</dt>
-          <dd><a id="c-email" href="mailto:info@emcodrumshells.com">info@emcodrumshells.com</a></dd>
-          <button class="copy" type="button" data-copy="c-email">Copy</button>
+
+        <fieldset class="group">
+          <legend>I’m a</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="customer-type" value="Drum company" required> Drum company</label>
+            <label class="choice"><input type="radio" name="customer-type" value="Boutique builder"> Boutique builder</label>
+            <label class="choice"><input type="radio" name="customer-type" value="Drummer"> Drummer</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="group">
+          <legend>What you’re looking for</legend>
+          <p class="hint" id="looking-hint">Fill in what you know so far.</p>
+          <div class="fields">
+            <div class="field">
+              <label for="f-sizes">Sizes</label>
+              <input id="f-sizes" name="sizes" type="text" aria-describedby="looking-hint sizes-hint">
+              <p class="hint" id="sizes-hint">Diameter and depth, such as 14&nbsp;×&nbsp;6.5</p>
+            </div>
+            <div class="field">
+              <label for="f-quantity">Quantity</label>
+              <input id="f-quantity" name="quantity" type="text" aria-describedby="looking-hint quantity-hint">
+              <p class="hint" id="quantity-hint">Shells or full kits</p>
+            </div>
+            <div class="field">
+              <label for="f-wood">Wood</label>
+              <input id="f-wood" name="wood" type="text" aria-describedby="looking-hint wood-hint">
+              <p class="hint" id="wood-hint">Maple, or another species you have in mind</p>
+            </div>
+            <div class="field">
+              <label for="f-timeline">Timeline</label>
+              <input id="f-timeline" name="timeline" type="text" aria-describedby="looking-hint timeline-hint">
+              <p class="hint" id="timeline-hint">When you need them, or “just pricing it out”</p>
+            </div>
+            <div class="field wide">
+              <label for="f-details">Anything else we should know?</label>
+              <textarea id="f-details" name="details" rows="4" aria-describedby="looking-hint"></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="fields">
+          <div class="field wide">
+            <label for="f-referral">How did you hear about us? <span class="opt">(optional)</span></label>
+            <select id="f-referral" name="referral">
+              <option value="">Choose one</option>
+              <option>Word of mouth</option>
+              <option>Another drum company or builder</option>
+              <option>Search engine</option>
+              <option>Social media</option>
+              <option>Drum show or event</option>
+              <option>Other</option>
+            </select>
+          </div>
         </div>
-        <div>
-          <dt>Shop</dt>
-          <dd>Kansas City, USA</dd>
+
+        <label class="check"><input type="checkbox" name="updates" value="Yes"> Send me occasional updates from EMCO</label>
+
+        <div class="submit-row">
+          <button class="btn btn-gold" type="submit">Send inquiry</button>
+          <p class="fine">We use your details to reply and, if you ask, to send occasional updates. See our <a href="privacy.html">Privacy Policy</a>.</p>
         </div>
-      </dl>
+        <p class="form-status" role="status"></p>
+
+        <div class="form-done" hidden>
+          <h3 class="form-title" tabindex="-1">Thanks, we’ve got it.</h3>
+          <p>Someone from the shop will get back to you soon. If it’s urgent, call <a href="tel:+18163001550">816-300-1550</a>.</p>
+        </div>
+      </form>
     </div>
   </section>
 </main>
@@ -289,6 +385,36 @@
       }
     });
   });
+
+  // Inquiry form: post to Netlify Forms in the background and thank the sender in place.
+  // Without JavaScript the form still posts normally and Netlify shows its own confirmation page.
+  const form = document.querySelector('.inquiry');
+  if (form) {
+    const status = form.querySelector('.form-status');
+    const button = form.querySelector('[type="submit"]');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      button.disabled = true;
+      status.classList.remove('is-error');
+      status.textContent = 'Sending…';
+      fetch(form.getAttribute('action'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      }).then(res => {
+        if (!res.ok) throw new Error(res.status);
+        status.textContent = '';
+        form.classList.add('is-sent');
+        const done = form.querySelector('.form-done');
+        done.hidden = false;
+        done.querySelector('.form-title').focus();
+      }).catch(() => {
+        status.classList.add('is-error');
+        status.textContent = 'Sorry, your note didn’t go through. Please try again, or call or email us instead.';
+        button.disabled = false;
+      });
+    });
+  }
 })();
 </script>
 </body>

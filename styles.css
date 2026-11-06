@@ -484,7 +484,7 @@ img { max-width: 100%; }
 .order .wrap {
   padding-block: clamp(64px, 9vw, 120px);
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
   gap: 40px clamp(32px, 7vw, 112px);
   align-items: start;
 }
@@ -529,6 +529,107 @@ img { max-width: 100%; }
   transition: border-color .2s, color .2s;
 }
 .copy:hover { border-color: var(--gold); color: var(--gold); }
+.order-intro .contact { margin-top: clamp(28px, 4vw, 44px); }
+
+/* Inquiry form: a framed panel beside the intro. Field borders mix --band-muted into the band
+   so they clear 3:1 against it; the band is dark in both color schemes, so one set of colors serves. */
+.inquiry {
+  --field-bg: color-mix(in srgb, var(--band-ink) 5%, var(--band));
+  --field-line: color-mix(in srgb, var(--band-muted) 65%, var(--band));
+  color-scheme: dark;
+  padding: clamp(24px, 3.4vw, 40px);
+  border: 1px solid var(--gold-line);
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--band-ink) 2%, var(--band));
+}
+.inquiry > * + * { margin-top: 28px; }
+.inquiry > .form-title { margin-top: 0; }
+.form-title {
+  font-family: var(--display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(1.6rem, 2.6vw, 2rem);
+  line-height: 1;
+  letter-spacing: .01em;
+  margin: 0;
+}
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 18px; }
+.field { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.field.wide { grid-column: 1 / -1; }
+.field > label, .group > legend {
+  font-family: var(--label);
+  font-weight: 700;
+  font-size: .8rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+.opt { color: var(--band-muted); font-weight: 600; letter-spacing: .08em; text-transform: none; }
+.inquiry input:not([type="radio"], [type="checkbox"]), .inquiry select, .inquiry textarea {
+  width: 100%;
+  margin: 0;
+  font-family: var(--body);
+  font-size: 1.0625rem;   /* 17px keeps iOS from zooming in on focus */
+  line-height: 1.4;
+  color: var(--band-ink);
+  background-color: var(--field-bg);
+  border: 1px solid var(--field-line);
+  border-radius: 2px;
+  padding: 11px 12px;
+  transition: border-color .2s;
+}
+.inquiry input:hover, .inquiry select:hover, .inquiry textarea:hover { border-color: var(--band-muted); }
+.inquiry input:focus-visible, .inquiry select:focus-visible, .inquiry textarea:focus-visible { border-color: var(--gold); }
+.inquiry textarea { resize: vertical; min-height: 7.5em; }
+.inquiry select {
+  appearance: none;
+  padding-right: 40px;
+  cursor: pointer;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--band-muted) 50%),
+    linear-gradient(135deg, var(--band-muted) 50%, transparent 50%);
+  background-position: calc(100% - 21px) 52%, calc(100% - 15px) 52%;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+}
+.inquiry .hint { margin: 0; max-width: none; font-size: .9rem; line-height: 1.4; color: var(--band-muted); }
+.group { margin-inline: 0; padding: 0; border: 0; min-width: 0; }
+.group > legend { float: left; width: 100%; padding: 0; margin: 0 0 12px; }
+.group > legend + * { clear: both; }
+.group > .fields { margin-top: 16px; }
+.choices { display: flex; flex-wrap: wrap; gap: 10px; }
+.choice, .check { font-family: var(--body); font-size: 1.0625rem; line-height: 1.35; cursor: pointer; }
+.choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px 10px 12px;
+  background: var(--field-bg);
+  border: 1px solid var(--field-line);
+  border-radius: 2px;
+  transition: border-color .2s, color .2s;
+}
+.choice:hover { border-color: var(--band-muted); }
+.choice:has(input:checked) { border-color: var(--gold); color: var(--gold-hi); }
+@supports selector(:has(*)) {
+  .choice input:focus-visible { outline: none; }
+  .choice:has(input:focus-visible) { outline: 2px solid var(--gold); outline-offset: 3px; }
+}
+.check { display: flex; align-items: flex-start; gap: 12px; }
+.inquiry input[type="radio"], .inquiry input[type="checkbox"] { accent-color: var(--gold); width: 18px; height: 18px; margin: 0; flex: none; }
+.check input { margin-top: .12em; }
+.submit-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+.inquiry .btn { cursor: pointer; }
+.inquiry .btn:disabled { opacity: .6; cursor: progress; transform: none; }
+.inquiry .fine { flex: 1 1 220px; margin: 0; max-width: 42ch; font-size: .9rem; line-height: 1.45; color: var(--band-muted); }
+.inquiry .fine a, .form-done a { color: var(--band-ink); text-underline-offset: .15em; }
+.inquiry .fine a:hover, .form-done a:hover { color: var(--gold); }
+.inquiry .form-status { margin-top: 20px; font-size: 1rem; line-height: 1.5; color: var(--band-muted); }
+.inquiry .form-status:empty { margin-top: 0; }
+.inquiry .form-status.is-error { color: var(--band-ink); border-left: 3px solid var(--gold); padding-left: 12px; }
+.inquiry.is-sent > :not(.form-done) { display: none; }
+.inquiry.is-sent > .form-done { margin-top: 0; }
+.inquiry .form-done p { margin: 14px 0 0; }
 
 /* ---------- Document pages (privacy.html, accessibility.html) ---------- */
 /* A black title band under the masthead, then a single readable column on the light ground. */
@@ -632,6 +733,8 @@ img { max-width: 100%; }
   .lineage li:last-child { padding-bottom: 0; }
   .lineage li::before { top: 4px; left: -8px; }
   .factors ul { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .inquiry { padding: 24px 20px; }
+  .fields { grid-template-columns: minmax(0, 1fr); }
   .site-foot .wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .foot-contact { grid-column: 1 / -1; order: 3; }
   .legal { order: 4; }
